@@ -36,16 +36,14 @@ func FastSearch(out io.Writer) {
 	foundUsers := ""
 
 	lines := strings.Split(string(fileContents), "\n")
-	users := []User{}
+	i := -1
 	for _, line := range lines {
+		i++
 		user := User{}
 		err := user.UnmarshalJSON([]byte(line))
 		if err != nil {
 			panic(err)
 		}
-		users = append(users, user)
-	}
-	for i, user := range users {
 		isAndroid := false
 		isMSIE := false
 
